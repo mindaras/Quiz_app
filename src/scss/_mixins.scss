@@ -1,0 +1,28 @@
+@mixin responsive($pixels){
+	@media screen and (max-width:$pixels){
+		@content;
+	}
+}
+
+@mixin mfresponsive($pixels){
+	@media screen and (min-width:$pixels){
+		@content;
+	}
+}
+
+@mixin button
+{
+	max-width: 280px;
+  width: 100%;
+	padding: 20px;
+  background-color: $midGreen;
+  font-size: 18px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: ease .3s;
+  cursor: pointer;
+	&:hover
+  {
+    background-color: darken($midGreen, 5%);
+  }
+}
