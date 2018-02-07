@@ -20,7 +20,7 @@ body
 {
   min-height: 100vh;
   position: relative;
-  &.index
+  &.index, &.finish
   {
     .triangle
     {
@@ -30,6 +30,13 @@ body
       border-top: 100vh solid $darkGreen;
       border-right: 100vw solid transparent;
       transition: ease .3s;
+    }
+  }
+  &.index
+  {
+    .container__index-content
+    {
+      display: block;
     }
   }
   &.playing
@@ -51,6 +58,33 @@ body
         border-top: 35vh solid #00a68c;
       }
     }
+    .container__game-content
+    {
+      display: block;
+    }
+  }
+  &.finish
+  {
+    .container__finish-content
+    {
+      display: block;
+    }
+  }
+  &.answers
+  {
+    .triangle
+    {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-top: 0 solid $darkGreen;
+      border-right: 0 solid transparent;
+      transition: ease .3s;
+    }
+    .container__answers-content
+    {
+      display: block;
+    }
   }
 }
 
@@ -63,6 +97,7 @@ body
   transform: translate(-50%, -50%);
   width: 100%;
   padding: 0 20px;
+  display: none;
   z-index: 10;
 }
 .title
@@ -70,6 +105,9 @@ body
   font-size: 80px;
   text-align: center;
   text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: elementFadeIn ease .3s forwards;
   @include responsive(767px)
   {
     font-size: 40px;
@@ -81,6 +119,9 @@ body
   font-size: 40px;
   text-align: center;
   text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: elementFadeIn ease .3s .1s forwards;
   @include responsive(767px)
   {
     font-size: 24px;
@@ -93,6 +134,9 @@ body
   font-size: 20px;
   text-align: center;
   text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: elementFadeIn ease .3s .2s forwards;
   @include responsive(767px)
   {
     font-size: 16px;
@@ -104,12 +148,18 @@ body
   @include button;
   margin: 0 auto;
   margin-top: 120px;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: elementFadeIn ease .3s .3s forwards;
+  @include responsive(991px)
+  {
+    font-size: 16px;
+  }
   @include responsive(767px)
   {
     margin-top: 50px;
     width: 100%;
     max-width: none;
-    font-size: 16px;
   }
 }
 
@@ -119,6 +169,7 @@ body
   position: relative;
   padding: 0 20px;
   padding-bottom: 30px;
+  display: none;
   z-index: 10;
 }
 .game-head
@@ -138,6 +189,9 @@ body
   padding-top: 55px;
   font-size: 24px;
   text-align: center;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: elementFadeIn ease .3s forwards;
   @include responsive(991px)
   {
     font-size: 18px;
@@ -153,6 +207,10 @@ body
   line-height: 1.2;
   text-align: center;
   margin-top: 100px;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: ease .3s;
+  animation: elementFadeIn ease .3s .1s forwards;
   @media screen and (min-width: 992px) and (max-height: 730px)
   {
     margin-top: 60px;
@@ -175,7 +233,6 @@ body
   display: -ms-flex;
   display: flex;
   justify-content: center;
-
   @media screen and (min-width: 992px) and (max-height: 730px)
   {
     margin-top: 80px;
@@ -201,6 +258,8 @@ body
   width: 230px;
   padding: 20px;
   text-align: center;
+  opacity: 0;
+  transform: translateY(15px);
   transition: ease .3s;
   cursor: pointer;
   @include responsive(991px)
@@ -227,11 +286,6 @@ body
   &:active
   {
     background-color: darken($lightGreen, 15%);
-    transform: translateY(-15px);
-    @include responsive(991px)
-    {
-      transform: translateY(-5px);
-    }
   }
   &:not(:first-of-type)
   {
@@ -241,12 +295,45 @@ body
       margin-left: 0;
     }
   }
+  &:nth-child(1)
+  {
+    animation: elementFadeIn ease .3s .2s forwards;
+  }
+  &:nth-child(2)
+  {
+    animation: elementFadeIn ease .3s .3s forwards;
+  }
+  &:nth-child(3)
+  {
+    animation: elementFadeIn ease .3s .4s forwards;
+  }
+  &:nth-child(4)
+  {
+    animation: elementFadeIn ease .3s .5s forwards;
+  }
+}
+@keyframes elementFadeIn
+{
+  0%
+  {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100%
+  {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .next
 {
   @include button;
   margin: 0 auto;
   margin-top: 100px;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: ease .3s;
+  animation: elementFadeIn ease .3s .6s forwards;
   @media screen and (min-width: 992px) and (max-height: 730px)
   {
     margin-top: 60px;
@@ -262,5 +349,203 @@ body
   @include responsive(767px)
   {
     margin-top: 30px;
+  }
+}
+
+/* finish content */
+.container__finish-content
+{
+  padding: 30px 20px;
+  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  display: none;
+  z-index: 10;
+}
+.finish__title
+{
+  margin-top: 50px;
+  font-size: 80px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: elementFadeIn ease .3s forwards;
+  @include responsive(767px)
+  {
+    font-size: 40px;
+  }
+}
+.finish__subtitle
+{
+  font-weight: 600;
+  font-size: 55px;
+  margin-top: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: elementFadeIn ease .3s .1s forwards;
+  @include responsive(767px)
+  {
+    font-size: 30px;
+    margin-top: 30px;
+  }
+}
+.finish__percent, .finish__result
+{
+  margin-top: 30px;
+  font-size: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(15px);
+  @include responsive(767px)
+  {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+}
+.finish__percent
+{
+  animation: elementFadeIn ease .3s .2s forwards;
+}
+.finish__result
+{
+  animation: elementFadeIn ease .3s .3s forwards;
+}
+.finish__buttons
+{
+  margin-top: 120px;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: center;
+  @media screen and (min-width: 992px) and (max-height: 730px)
+  {
+    margin-top: 100px;
+  }
+  @media screen and (min-width: 992px) and (max-height: 700px)
+  {
+    margin-top: 80px;
+  }
+  @include responsive(767px)
+  {
+    margin-top: 50px;
+    flex-direction: column;
+  }
+}
+.finish__button
+{
+  @include button;
+  opacity: 0;
+  transform: translateY(15px);
+  @include responsive(991px)
+  {
+    font-size: 16px;
+  }
+  @include responsive(767px)
+  {
+    width: 100%;
+  }
+  &:first-of-type
+  {
+    animation: elementFadeIn ease .3s .4s forwards;
+  }
+  &:last-of-type
+  {
+    margin-left: 150px;
+    animation: elementFadeIn ease .3s .5s forwards;
+    @include responsive(767px)
+    {
+      margin-left: 0;
+      margin-top: 20px;
+    }
+  }
+}
+
+/* answers content */
+.container__answers-content
+{
+  padding: 60px 40px;
+  display: none;
+  @include responsive(767px)
+  {
+    padding: 30px 20px;
+  }
+}
+.answers__list
+{
+  counter-reset: answer;
+}
+.answers__item
+{
+  counter-increment: answer;
+  &:not(:first-of-type)
+  {
+    margin-top: 25px;
+    @include responsive(767px)
+    {
+      margin-top: 20px;
+    }
+  }
+  .answers__question
+  {
+    &::before
+    {
+      content:counter(answer) '. ';
+    }
+  }
+}
+.answers__question
+{
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  @include responsive(767px)
+  {
+    font-size: 18px;
+  }
+}
+.answers__correct-answer
+{
+  font-size: 18px;
+  margin-top: 10px;
+  padding-left: 5px;
+  line-height: 1.2;
+}
+.answers__correct-answer
+{
+  &::before
+  {
+    display: inline-block;
+    vertical-align: middle;
+    content: '';
+    width: 5px;
+    height: 5px;
+    background-color: #000;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+}
+.answers__button
+{
+  margin-top: 50px;
+  @include button;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: elementFadeIn ease .3s forwards;
+  @include responsive(991px)
+  {
+    font-size: 16px;
+  }
+  @include responsive(767px)
+  {
+    margin-top: 30px;
+    width: 100%;
   }
 }

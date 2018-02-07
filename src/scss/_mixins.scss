@@ -25,4 +25,8 @@
   {
     background-color: darken($midGreen, 5%);
   }
+	&:active
+	{
+		background-color: darken($midGreen, 10%);
+	}
 }
