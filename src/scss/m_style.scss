@@ -295,6 +295,10 @@ body
       margin-left: 0;
     }
   }
+  &.active
+  {
+    background-color: darken($lightGreen, 20%);
+  }
   &:nth-child(1)
   {
     animation: elementFadeIn ease .3s .2s forwards;
