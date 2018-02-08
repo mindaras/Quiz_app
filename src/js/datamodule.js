@@ -39,9 +39,14 @@ let getCurrentQuestion = () => {
   return data.questionCopyList[data.currentQuestion];
 };
 
-
+// increment counter
 let updateCounter = () => {
   data.counter++;
+};
+
+// get current question number and total question count
+let getCounterData = () => {
+  return [data.counter, data.questionList.length];
 };
 
 // add an answer to the answeredQuestions
@@ -58,7 +63,7 @@ let addAnswer = (answer) => {
   data.answeredQuestions.push(answerValue);
 
   // 4. Remove question from the questionCopyList
-  data.questionCopyList.splice(data.currentQuestion, 1);
+  removeQuestion();
 };
 
 let checkAnswer = (answerID) => {
@@ -73,7 +78,41 @@ let checkAnswer = (answerID) => {
 
 // remove the answered question from the questionCopyList
 let removeQuestion = () => {
+  data.questionCopyList.splice(data.currentQuestion, 1);
+};
 
+// get quiz result in percentages
+let getResult = () => {
+  let correctAnswers;
+
+  correctAnswers = data.answeredQuestions.filter(curr => curr === true);
+
+  return Math.round((correctAnswers.length / data.questionList.length) * 100);
+};
+
+// reset counter
+let resetCounter = () => {
+
+  // 1. reset counter
+  data.counter = 0;
+
+  // 2. refill questionCopyList
+  data.questionCopyList = Array.from(data.questionList);
+
+  // 3. clear answeredQuestions
+  data.answeredQuestions = [];
+};
+
+let getCorrectAnswers = () => {
+  let incorrectAnswerList = [];
+
+  data.answeredQuestions.forEach((curr, index) => {
+    if (curr === false) {
+      incorrectAnswerList.push(data.questionList[index]);
+    }
+  });
+
+  return incorrectAnswerList;
 };
 
 
@@ -81,5 +120,9 @@ export {
   generateRandomIndex,
   getCurrentQuestion,
   addAnswer,
-  updateCounter
+  updateCounter,
+  getCounterData,
+  getResult,
+  resetCounter,
+  getCorrectAnswers
 };

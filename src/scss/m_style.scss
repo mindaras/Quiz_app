@@ -454,6 +454,7 @@ body
   }
   @include responsive(767px)
   {
+    max-width: none;
     width: 100%;
   }
   &:first-of-type
