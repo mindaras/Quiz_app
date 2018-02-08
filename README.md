@@ -6,3 +6,8 @@ The app was made using modern front end technologies like: webpack (JavScript mo
 The quiz app contains 4 stages: index (before the game begins), playing (answering the questions), result (getting the result), checking answers (checking the correct answers if mistakes were made).
 
 You can try it at: https://mindaras.github.io/quiz_app/.
+
+![Alt text](dist/screenshots/1.png?raw=true)
+![Alt text](dist/screenshots/1.png?raw=true)
+![Alt text](dist/screenshots/1.png?raw=true)
+![Alt text](dist/screenshots/1.png?raw=true)
