@@ -16,15 +16,15 @@ function Question(question, answers, correct) {
 
 // add question
 data.questionList.push(new Question('What is the meaning of \'dog\'?', ['Katė', 'Šuo', 'Dramblys', 'Lokys'], 2));
-// data.questionList.push(new Question('What is the meaning of \'table\'?', ['Stalas', 'Rusys', 'Kėdė', 'Siena'], 1));
-// data.questionList.push(new Question('What is the meaning of \'chair\'?', ['Pelė', 'Kėdė', 'Nosis', 'Akis'], 2));
-// data.questionList.push(new Question('What is the meaning of \'glass\'?', ['Stiklas', 'Žiedas', 'Stalas', 'Vanduo'], 1));
-// data.questionList.push(new Question('What is the meaning of \'cup\'?', ['Taurė', 'Puodelis', 'Usbonas', 'Bokalas'], 2));
-// data.questionList.push(new Question('What is the meaning of \'cat\'?', ['Pelė', 'Šuo', 'Katė', 'Voverė'], 3));
-// data.questionList.push(new Question('What is the meaning of \'squirrel\'?', ['Voverė', 'Graužikas', 'Žinduolis', 'Plėšrūnas'], 1));
-// data.questionList.push(new Question('What is the meaning of \'goat\'?', ['Tigras', 'Liūtas', 'Puma', 'Ožka'], 4));
-// data.questionList.push(new Question('What is the meaning of \'mouse\'?', ['Varlė', 'Žuvis', 'Pelė', 'Voverė'], 3));
-// data.questionList.push(new Question('What is the meaning of \'lion\'?', ['Liūtas', 'Raganosis', 'Begemotas', 'Gazelė'], 1));
+data.questionList.push(new Question('What is the meaning of \'table\'?', ['Stalas', 'Rusys', 'Kėdė', 'Siena'], 1));
+data.questionList.push(new Question('What is the meaning of \'chair\'?', ['Pelė', 'Kėdė', 'Nosis', 'Akis'], 2));
+data.questionList.push(new Question('What is the meaning of \'glass\'?', ['Stiklas', 'Žiedas', 'Stalas', 'Vanduo'], 1));
+data.questionList.push(new Question('What is the meaning of \'cup\'?', ['Taurė', 'Puodelis', 'Usbonas', 'Bokalas'], 2));
+data.questionList.push(new Question('What is the meaning of \'cat\'?', ['Pelė', 'Šuo', 'Katė', 'Voverė'], 3));
+data.questionList.push(new Question('What is the meaning of \'squirrel\'?', ['Voverė', 'Graužikas', 'Žinduolis', 'Plėšrūnas'], 1));
+data.questionList.push(new Question('What is the meaning of \'goat\'?', ['Tigras', 'Liūtas', 'Puma', 'Ožka'], 4));
+data.questionList.push(new Question('What is the meaning of \'mouse\'?', ['Varlė', 'Žuvis', 'Pelė', 'Voverė'], 3));
+data.questionList.push(new Question('What is the meaning of \'lion\'?', ['Liūtas', 'Raganosis', 'Begemotas', 'Gazelė'], 1));
 
 // duplicate questionList
 data.questionCopyList = Array.from(data.questionList);
