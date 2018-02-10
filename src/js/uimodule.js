@@ -125,11 +125,11 @@ let displayResult = (resultPercentage) => {
 
   // if score is 100, hide check answers button
   if (resultPercentage === 100) {
-    checkAnswersButton.style.display = 'none';
-    tryAgainButton.style.marginLeft = 0;
+    checkAnswersButton.classList.add('hidden');
+    tryAgainButton.classList.add('single');
   } else {
-    checkAnswersButton.style.display = 'block';
-    window.innerWidth > 767 ? tryAgainButton.style.marginLeft = 150 + 'px' : tryAgainButton.style.marginLeft = 0;
+    checkAnswersButton.classList.remove('hidden');
+    tryAgainButton.classList.remove('single');
   }
   
   // display result text
@@ -160,27 +160,6 @@ let displayCorrectAnswers = (answerList) => {
   });
 };
 
-let checkTryAgainMargin = () => {
-  let tryAgainButton, score;
-
-  tryAgainButton = document.getElementById(DOMStrings.tryAgain);
-  score = document.getElementById(DOMStrings.resultPercentage).textContent;
-
-  // check window width
-  if (window.innerWidth <= 767) {
-    
-    tryAgainButton.style.marginLeft = 0;
-
-  } else {
-    // check score
-    if (score !== '100%') {
-      tryAgainButton.style.marginLeft = 150 + 'px';
-    }
-
-  };
-
-};
-
 export {
   DOMStrings,
   changeState,
@@ -189,6 +168,5 @@ export {
   checkAnswer,
   getAnswer,
   displayResult,
-  displayCorrectAnswers,
-  checkTryAgainMargin
+  displayCorrectAnswers
 };

@@ -470,7 +470,15 @@ body
       margin-left: 0;
       margin-top: 20px;
     }
+    &.single
+    {
+      margin-left: 0;
+    }
   }
+}
+.hidden
+{
+  display: none;
 }
 
 /* answers content */

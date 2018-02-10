@@ -1,6 +1,6 @@
 import './scss/m_style.scss';
 import { generateRandomIndex, getCurrentQuestion, updateCounter, addAnswer, getCounterData, getResult, resetCounter, getCorrectAnswers } from './js/datamodule';
-import { DOMStrings, changeState, displayCurrentQuestion, activateAnswer, checkAnswer, getAnswer, displayResult, displayCorrectAnswers, checkTryAgainMargin  } from './js/uimodule';
+import { DOMStrings, changeState, displayCurrentQuestion, activateAnswer, checkAnswer, getAnswer, displayResult, displayCorrectAnswers } from './js/uimodule';
 
 // event listeners
 let setupEventListeners = () => {
@@ -28,18 +28,6 @@ let setupEventListeners = () => {
   // try again
   document.getElementById(DOMStrings.tryAgain).addEventListener('click', restartGame);
   document.getElementById(DOMStrings.answersTryAgainButton).addEventListener('click', backToStart);
-
-  // check try again button margin in result stage based on the score
-  window.addEventListener('resize', function() {
-    let container;
-
-    container = document.querySelector(DOMStrings.mainContainer);
-
-    if (container.classList.contains('finish')) {
-      checkTryAgainMargin();
-    };
-    
-  });
 };
 
 // get the next question
