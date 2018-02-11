@@ -51,29 +51,32 @@ let getCounterData = () => {
 
 // add an answer to the answeredQuestions
 let addAnswer = (answer) => {
-  let answerID, answerValue;
+  let answerID, answerValue, questionIndex;
 
   // 1. Get answer id
   answerID = parseInt(answer[0].getAttribute('data-answer-id'));
 
   // 2. Check if answer is correct
-  answerValue = checkAnswer(answerID);
+  [answerValue, questionIndex] = checkAnswer(answerID);
   
   // 3. Add answer to the answeredQuestions array
-  data.answeredQuestions.push([answerValue, answerID]);
+  data.answeredQuestions.push([answerValue, answerID, questionIndex]);
 
   // 4. Remove question from the questionCopyList
   removeQuestion();
 };
 
 let checkAnswer = (answerID) => {
-  let correctAnswer;
+  let correctAnswer, questionIndex;
  
   // 1. Get correct answer
   correctAnswer = data.questionCopyList[data.currentQuestion].correct;
 
-  // 2. Return value
-  return answerID === correctAnswer;
+  // 2. Get question index
+  questionIndex = data.questionList.indexOf(data.questionCopyList[data.currentQuestion]);
+
+  // 3. Return value and index
+  return [answerID === correctAnswer, questionIndex];
 };
 
 // remove the answered question from the questionCopyList
@@ -106,9 +109,13 @@ let resetCounter = () => {
 let getCorrectAnswers = () => {
   let incorrectAnswerList = [];
 
-  data.answeredQuestions.forEach((curr, index) => {
+  data.answeredQuestions.forEach((curr) => {
+    let questionIndex;
+
+    questionIndex = curr[2];
+
     if (curr[0] === false) {
-      incorrectAnswerList.push([data.questionList[index], curr[1]]);
+      incorrectAnswerList.push([data.questionList[questionIndex], curr[1]]);
     }
   });
 
