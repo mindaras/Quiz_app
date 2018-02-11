@@ -262,6 +262,13 @@ body
   transform: translateY(15px);
   transition: ease .3s;
   cursor: pointer;
+  @media screen and (min-width: 992px)
+  {
+    &:hover
+    {
+      background-color: lighten($lightGreen, 15%);
+    }
+  }
   @include responsive(991px)
   {
     width: 48%;
@@ -278,10 +285,6 @@ body
     {
       margin-top: 15px;
     }
-  }
-  &:hover
-  {
-    background-color: lighten($lightGreen, 15%);
   }
   &:active
   {
