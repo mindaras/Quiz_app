@@ -60,7 +60,7 @@ let addAnswer = (answer) => {
   answerValue = checkAnswer(answerID);
   
   // 3. Add answer to the answeredQuestions array
-  data.answeredQuestions.push(answerValue);
+  data.answeredQuestions.push([answerValue, answerID]);
 
   // 4. Remove question from the questionCopyList
   removeQuestion();
@@ -85,7 +85,7 @@ let removeQuestion = () => {
 let getResult = () => {
   let correctAnswers;
 
-  correctAnswers = data.answeredQuestions.filter(curr => curr === true);
+  correctAnswers = data.answeredQuestions.filter(curr => curr[0] === true);
 
   return Math.round((correctAnswers.length / data.questionList.length) * 100);
 };
@@ -107,8 +107,8 @@ let getCorrectAnswers = () => {
   let incorrectAnswerList = [];
 
   data.answeredQuestions.forEach((curr, index) => {
-    if (curr === false) {
-      incorrectAnswerList.push(data.questionList[index]);
+    if (curr[0] === false) {
+      incorrectAnswerList.push([data.questionList[index], curr[1]]);
     }
   });
 

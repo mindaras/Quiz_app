@@ -5,7 +5,6 @@ const DOMStrings = {
   question: 'question',
   answer: '.answer-option',
   answerOption: '.answer-option',
-  nextButton: 'next',
   currentQuestionLabel: 'currentQuestion',
   totalQuestionsLabel: 'totalQuestions',
   resultPercentage: 'percent',
@@ -145,15 +144,21 @@ let displayCorrectAnswers = (answerList) => {
   container.innerHTML = '';
 
   answerList.forEach((curr) => {
-    let template, correctIndex, correctAnswer;
+    let template, correctIndex, incorrectIndex, question, correctAnswer, incorrectAnswer;
 
-    correctIndex = curr.correct;
-    correctAnswer = curr.answers[correctIndex - 1];
+    correctIndex = curr[0].correct;
+    incorrectIndex = curr[1];
+    question = curr[0].question;
+    correctAnswer = curr[0].answers[correctIndex - 1];
+    incorrectAnswer = curr[0].answers[incorrectIndex - 1];
     
     template = `
     <li class="answers__item">
-      <p class="answers__question">${curr.question}</p>
-      <p class="answers__correct-answer">${correctAnswer}</p>
+      <p class="answers__question">${question}</p>
+      <div class="answers__wrapper">
+        <p class="answers__answer correct">${correctAnswer}</p>
+        <p class="answers__answer incorrect">${incorrectAnswer}</p>
+      </div>
     </li>`;
 
     container.insertAdjacentHTML('beforeend', template);

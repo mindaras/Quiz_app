@@ -524,14 +524,30 @@ body
     font-size: 18px;
   }
 }
-.answers__correct-answer
+.answers__wrapper
+{
+  display: flex;
+}
+.answers__answer
 {
   font-size: 18px;
   margin-top: 10px;
   padding-left: 5px;
   line-height: 1.2;
+  &:last-of-type
+  {
+    margin-left: 15px;
+  }
+  &.correct
+  {
+    color: $darkGreen;
+  }
+  &.incorrect
+  {
+    color: $red;
+  }
 }
-.answers__correct-answer
+.answers__answer
 {
   &::before
   {

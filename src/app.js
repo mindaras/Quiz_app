@@ -16,11 +16,9 @@ let setupEventListeners = () => {
   answerOptionList.forEach(curr => {
     curr.addEventListener('click', function() {
       activateAnswer(this);
+      changeQuestion();
     });
   });
-
-  // change question
-  document.getElementById(DOMStrings.nextButton).addEventListener('click', changeQuestion);
 
   // check answers
   document.getElementById(DOMStrings.checkAnswers).addEventListener('click', checkCorrectAnswers);
